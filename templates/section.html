@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Fashion Adviser</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css')}}">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/swiper.min.css')}}">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+<div class="outer-container">
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="site-branding flex flex-column align-items-center">
+                        <figure class="branding-image">
+                            <img src="{{url_for('static', filename='images/logo.png')}}" alt=""><a href="index.html" rel="home"></a></img>
+                        </figure><!-- .featured-image -->
+                        <p class="site-description">Personal Blog</p>
+                    </div><!-- .site-branding -->
+
+                    <nav class="site-navigation">
+                        <div class="hamburger-menu d-lg-none">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div><!-- .hamburger-menu -->
+
+                        <ul class="flex-lg flex-lg-row justify-content-lg-center align-content-lg-center">
+                          <li class="current-menu-item"><a href="/">Home</a></li>
+                          <li><a href="Fashion.html">Fashion</a></li>
+                          <li><a href="Beauty.html">Beauty</a></li>
+                          <li><a href="Fitness.html">Fitness</a></li>
+                          <li><a href="Lifestyle.html">Lifestyle</a></li>
+                          <li><a href="Shop.html">Shop</a></li>
+                        </ul>
+
+                    </nav><!-- .site-navigation -->
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </header><!-- .site-header -->
+
+    <div class="container-fluid">
+
+
+
+<!-- POST Main content -->
+    <div class="container single-page">
+        <div class="row">
+            <div class="col-12 col-lg-9">
+
+              {% for post in main_posts %}
+                <div class="content-wrap">
+                    <header class="entry-header">
+                        <div class="posted-date">
+                            {{post.timestap}}
+                        </div><!-- .posted-date -->
+                        <h1 class="entry-title"><a href="{{ url_for('post', post_id=post.id) }}">{{post.title}}</a></h1>
+                        <div class="tags-links">
+                            <a href="#">#winter</a>
+                            <a href="#">#love</a>
+                            <a href="#">#snow</a>
+                            <a href="#">#january</a>
+                        </div><!-- .tags-links -->
+                    </header><!-- .entry-header -->
+                    <figure class="featured-image">
+                        <img src="{{post.photo_url}}" alt="">
+                    </figure><!-- .featured-image -->
+
+                    <div class="entry-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat. Proin nec interdum sem. Quisque in porttitor magna, a imperdiet est. </p>
+                    </div><!-- .entry-content -->
+
+                    <footer class="entry-footer flex flex-column flex-lg-row justify-content-between align-content-start align-lg-items-center">
+                        <ul class="post-share flex align-items-center order-3 order-lg-1">
+                            <label>Share</label>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul><!-- .post-share -->
+
+                        <a class="read-more order-2" href="#">Read more</a>
+
+                        <div class="comments-count order-1 order-lg-3">
+                            <a href="#">2 Comments</a>
+                        </div><!-- .comments-count -->
+                    </footer><!-- .entry-footer -->
+                </div><!-- .content-wrap -->
+                {% endfor %}
+
+
+                <div class="pagination">
+                    <ul class="flex align-items-center">
+                        <li class="active"><a href="#">01.</a></li>
+                        <li><a href="#">02.</a></li>
+                        <li><a href="#">03.</a></li>
+                    </ul>
+                </div>
+            </div><!-- .col -->
+
+            <div class="col-12 col-lg-3">
+                <div class="sidebar-about-me">
+                    <div class="about-me">
+                      <img src="{{url_for('static', filename='images/about.jpeg')}}">
+                      <h2 class="about-me">About Me</h2>
+                      <h3 class="about-me">I’m Nayeli</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat. Proin nec interdum sem. Quisque in porttitor magna.</p>
+                    </div><!-- .about-me -->
+
+                    <div class="header-bar-social d-none d-md-block">
+                        <ul class="flex align-items-center">
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div><!-- .header-bar-social -->
+
+                    <div class="recent-posts">
+                        {% for spost in side_posts %}
+                        <div class="recent-post-wrap">
+                            <figure>
+                                <img src="{{ spost.photo_url }}" alt="">
+                            </figure>
+
+                            <header class="entry-header">
+                                <div class="posted-date">
+                                    {{ spost.timestap }}
+                                </div><!-- .entry-header -->
+
+                                <h3><a href="#">{{ spost.title }}</a></h3>
+
+                                <div class="tags-links">
+                                    <a href="#">#first</a>
+                                    <a href="#">#second</a>
+                                    <a href="#">#third</a>
+                                    <a href="#">#fourth</a>
+                                </div><!-- .tags-links -->
+                            </header><!-- .entry-header -->
+                        </div><!-- .recent-post-wrap -->
+                        {% endfor %}
+                    </div><!-- .recent-posts -->
+
+
+                    <div class="tags-list">
+                        <a href="#">Music</a>
+                        <a href="#">Love</a>
+                        <a href="#">Car</a>
+                        <a href="#">Stories</a>
+                        <a href="#">Photography</a>
+                        <a href="#">Music</a>
+                        <a href="#">Car</a>
+                    </div><!-- .tags-list -->
+
+
+                </div><!-- .sidebar -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</div><!-- .outer-container -->
+
+
+
+    <div class="footer-bar">
+        <div class="outer-container">
+            <div class="container-fluid">
+                <div class="row justify-content-between">
+                    <div class="col-12 col-md-6">
+                        <div class="footer-copyright">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div><!-- .footer-copyright -->
+                    </div><!-- .col-xl-4 -->
+
+                    <div class="col-12 col-md-6">
+                        <div class="footer-social">
+                            <ul class="flex justify-content-center justify-content-md-end align-items-center">
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div><!-- .footer-social -->
+                    </div><!-- .col-xl-4 -->
+                </div><!-- .row -->
+            </div><!-- .container-fluid -->
+        </div><!-- .outer-container -->
+    </div><!-- .footer-bar -->
+</footer><!-- .sit-footer -->
+
+<script type='text/javascript' src="{{ url_for('static', filename='js/jquery.js')}}"></script>
+<script type='text/javascript' src="{{ url_for('static', filename='js/swiper.min.js')}}"></script>
+<script type='text/javascript' src="{{ url_for('static', filename='js/custom.js')}}"></script>
+
+</body>
+</html>
