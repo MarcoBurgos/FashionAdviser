@@ -41,12 +41,12 @@
                         </div><!-- .hamburger-menu -->
 
                         <ul class="flex-lg flex-lg-row justify-content-lg-center align-content-lg-center">
-                            <li class="current-menu-item"><a href="index.html">Home</a></li>
-                            <li><a href="section.html">Fashion</a></li>
-                            <li><a href="#">Beauty</a></li>
-                            <li><a href="#">Fitness</a></li>
-                            <li><a href="#">Lifestyle</a></li>
-                            <li><a href="#">Shop</a></li>
+                          <li class="current-menu-item"><a href="/">Home</a></li>
+                          <li><a href="section/Fashion.html">Fashion</a></li>
+                          <li><a href="section/Beauty.html">Beauty</a></li>
+                          <li><a href="section/Fitness.html">Fitness</a></li>
+                          <li><a href="section/Lifestyle.html">Lifestyle</a></li>
+                          <li><a href="section/Shop.html">Shop</a></li>
                         </ul>
 
                     </nav><!-- .site-navigation -->
@@ -115,11 +115,10 @@
                     <footer class="entry-footer flex flex-column flex-lg-row justify-content-between align-content-start align-lg-items-center">
                         <ul class="post-share flex align-items-center order-3 order-lg-1">
                             <label>Share</label>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                             <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         </ul><!-- .post-share -->
 
                         <a class="read-more order-2" href="#">Read more</a>
@@ -145,7 +144,7 @@
                 <div class="sidebar">
                     <div class="about-me">
                       <figure class="featured-image-about-me">
-                          <img src="images/fotos/about.jpeg" alt="Youtube Subscribe">
+                          <img src="{{url_for('static', filename='images/about.jpeg')}}">
                       </figure>
                       <h2 class="about-me">About Me</h2>
                       <h3 class="about-me">I’m Nayeli</h3>
@@ -239,20 +238,6 @@
 <script type='text/javascript' src="{{ url_for('static', filename='js/swiper.min.js')}}"></script>
 <script type='text/javascript' src="{{ url_for('static', filename='js/custom.js')}}"></script>
 
-
-<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDiAhJLXt49O2SS6QAc6Ws2WwmqiSEKe9M",
-    authDomain: "blogflask-953b0.firebaseapp.com",
-    databaseURL: "https://blogflask-953b0.firebaseio.com",
-    projectId: "blogflask-953b0",
-    storageBucket: "blogflask-953b0.appspot.com",
-    messagingSenderId: "1027688820646"
-  };
-  firebase.initializeApp(config);
-</script>
 
 </body>
 </html>

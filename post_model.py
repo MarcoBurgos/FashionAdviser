@@ -20,13 +20,13 @@ class Blog_posts(db.Model):
     post_content = db.Column(db.Text, nullable=False)
     section_type = db.Column(db.String(30), nullable=False)
 
-    def __init__(self,title, subtitle, photo_url, timestap, post_content, section_name):
+    def __init__(self,title, subtitle, photo_url, timestap, post_content, section_type):
         self.title = title
         self.subtitle = subtitle
         self.photo_url = photo_url
         self.timestap = timestap
         self.post_content = post_content
-        self.section_name = section_name
+        self.section_type = section_type
 
     def __repr__(self):
         return f"Title {self.title} was uploaded on {self.timestap}"
