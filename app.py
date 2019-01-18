@@ -28,15 +28,17 @@ def index():
     return render_template('index.html', main_posts=main_posts, feature_post=feature_post, side_posts=side_posts)
 
 
-@app.route('/<string:section_type>')
-def section(section_type):
-    section_name = re.sub(".html", "", section_type )
+@app.route('/section/<string:section_name>'+'.html')
+def section(section_name):
+    #section_name = re.sub("section", "", section_name )
+    # if "section" in section_type:
+    #     section_type = re.sub("section", "", section_type)
     main_posts = Blog_posts.query.filter(Blog_posts.section_type==section_name).all()
     side_posts = Blog_posts.query.filter(Blog_posts.id>4).limit(9).all()
     print(f"titule urle is {section_name}")
-    print(f"main_posts is {main_posts}")
-    return render_template('section.html', main_posts=main_posts, side_posts=side_posts, section_type=section_name)
-
+    #print(f"main_posts is {main_posts}")
+    return render_template('section.html', main_posts=main_posts, side_posts=side_posts, section_name=section_name)
+    #return render_template('section.html')
 
 @app.route('/post/<int:post_id>')
 def post(post_id):
@@ -45,7 +47,7 @@ def post(post_id):
      return render_template('post.html', post=post)
 
 
-@app.route('/addpost.html', methods=['GET', 'POST'])
+@app.route('/dashboard/addpost', methods=['GET', 'POST'])
 def addpost():
 
     form = PostForm()
@@ -60,10 +62,10 @@ def addpost():
         print("is valid!")
         post = Blog_posts(form.title.data, form.subtitle.data, form.photo_url.data, datetime.now(), form.post_content.data, form.section_type.data)
         #post = Blog_posts(title=form.title.data, subtitle=form.subtitle.data, photo_url=form.photo_url.data, timestap=datetime.now(),post_content=form.post_content.data, section_type=form.section_type.data)
-        print(post)
+        #print(post)
         db.session.add(post)
         db.session.commit()
-        print(post)
+        #print(post)
         return redirect(url_for("index"))
     else:
         print("Not valid")
