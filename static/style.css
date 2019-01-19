@@ -24,7 +24,12 @@
 body {
     color: #2f2f2f;
     font-family: 'HelveticaNeueLTPro-Md';
+    background-image: url('images/leaves.png');
+    background-repeat: repeat;
+
 }
+
+
 
 img {
     vertical-align: baseline;
@@ -110,6 +115,7 @@ a:hover, a:active {
 # Header Bar Social
 --------------------------------*/
 .header-bar-social {
+    margin-top: 30px;
     margin-right: 15px;
 }
 
@@ -126,7 +132,7 @@ a:hover, a:active {
     width: 24px;
     height: 24px;
     margin: 0 10px;
-    font-size: 14px;
+    font-size: 24px;
 }
 
 .header-bar-social li a {
@@ -177,7 +183,7 @@ a:hover, a:active {
 # Site Branding
 --------------------------------*/
 .site-branding {
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 .branding-image img {
@@ -280,6 +286,8 @@ a:hover, a:active {
 # Main Menu
 --------------------------------*/
 .site-navigation {
+    margin-top: 30px;
+    margin-bottom: 30px;
     position: absolute;
     left: 0;
     z-index: 9999;
