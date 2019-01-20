@@ -24,9 +24,10 @@ db.init_app(app)
 @app.route('/')
 def index():
     main_posts = Blog_posts.query.order_by(Blog_posts.timestap.desc()).limit(2).all()
-    #main_posts = Blog_posts.query.filter(Blog_posts.id>0).limit(2).all()
-    feature_post = Blog_posts.query.filter(Blog_posts.id>2).limit(2).all()
-    side_posts = Blog_posts.query.filter(Blog_posts.id>4).limit(2).all()
+    feature_post = Blog_posts.query.order_by(Blog_posts.timestap.desc()).limit(5).all()
+    feature_post = feature_post[2:]
+    side_posts = Blog_posts.query.order_by(Blog_posts.timestap.desc()).limit(10).all()
+    side_posts =  side_posts[5:]
 
     return render_template('index.html', main_posts=main_posts, feature_post=feature_post, side_posts=side_posts)
 
@@ -36,9 +37,9 @@ def section(section_name):
     count = db.session.query(Blog_posts).filter(Blog_posts.id>0).count()
     count = round(count/5)
     main_posts = Blog_posts.query.order_by(Blog_posts.timestap.desc()).filter(Blog_posts.section_type==section_name).limit(3).all()
-    print(f"main posts are {main_posts}")
-    side_posts = Blog_posts.query.filter(Blog_posts.id>4).limit(3).all()
-    print(f"titule urle is {section_name}")
+    side_posts = Blog_posts.query.order_by(Blog_posts.timestap.desc()).filter(Blog_posts.section_type!=section_name).limit(10).all()
+    side_posts =  side_posts[3:]
+
 
     return render_template('section.html', main_posts=main_posts, side_posts=side_posts, section_name=section_name, count=count)
 
