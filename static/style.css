@@ -43,7 +43,7 @@ a {
 }
 
 a:visited {
-    color: purple;
+  /*--  color: purple;-*/
 }
 
 a:hover, a:focus, a:active {
@@ -605,6 +605,11 @@ a:hover, a:active {
     color: #afafaf;
 }
 
+
+.label_post {
+    color: #000000 !important;;
+}
+
 .post-share label {
     margin: 0 12px 0 0;
     font-size: 18px;
@@ -692,6 +697,12 @@ a:hover, a:active {
   position: relative;
   text-align: center;
   color: white;
+}
+
+.container-table-dashboard {
+  position: relative;
+  text-align: center;
+  color: black;
 }
 
 .container-addpost {

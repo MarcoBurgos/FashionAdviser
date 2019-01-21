@@ -1,6 +1,6 @@
 {% extends "base.html"%}
 {% block content %}
-
+<br>
 <div class="container-header">
   <p class="display-1-header">Nueva publicación</p>
 </div>
@@ -10,12 +10,13 @@
                       {# This hidden_tag is a CSRF security feature. #}
                       {{ form.hidden_tag() }}
                       {{ form.csrf_token }}
-                      {{ form.title.label }} {{form.title}}
-                      {{ form.subtitle.label}} {{form.subtitle}}
-                      {{form.photo_url.label}}{{form.photo_url}}
-                      {{form.section_type.label}}{{form.section_type}}
-                      Escribe aquí el contenido del post
-                      {{form.post_content}}
+                      {{ form.title.label (class_='label_post') }} {{form.title}}
+                      {{ form.subtitle.label (class_='label_post') }} {{form.subtitle}}
+                      {{ form.photo_url.label (class_='label_post') }}{{form.photo_url}}
+                      {{ form.section_type.label (class_='label_post') }}<br>
+                      {{ form.section_type}}<br>
+                      <p (class_='label_post') >Escribe aquí el contenido del post</p>
+                      {{form.post_content (size=80)}}
                       {{ form.submit() }}
                     </form><!-- .contact-form -->
                 </div><!-- .content-wrap -->
