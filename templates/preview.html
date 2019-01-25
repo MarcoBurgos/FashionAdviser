@@ -1,29 +1,28 @@
-{% extends "base.html"%}
-{% block content %}
-<div class="container-header">
-  <p class="display-1-header">Preview</p>
-</div>
-
+<br>
 <div class="container">
-  <button type="button" class="btn btn-primary">Confirmar</button>
-  <button type="button" class="btn btn-warning">Regresar a editar</button>
+  <a href="{{ url_for('dashboard') }}" class="btn btn-primary" style="margin-right: 15px">Confirmar y publicar post</a>
+  <a href="{{ url_for('editpost', post_id=post.id) }}" class="btn btn-warning" style="margin-right: 15px">Regresar a editar post</a>
+  <a href="{{ url_for('delete', post_id=post.id) }}" class="btn btn-danger">Descartar y borrar post</a>
 </div>
 
+{% extends "base.html"%}
 
+
+{% block content %}
 
     <div class="container single-page blog-page">
         <div class="row">
             <div class="col-12">
                 <div class="content-wrap">
                   <figure class="featured-image-post">
-                      <img src="{form.photo_url}" alt="">
+                      <img src="{{post.photo_url}}" alt="">
                   </figure><!-- .featured-image -->
                     <header class="entry-header">
                         <div class="posted-date">
-                            timestamp
+                            {{post.timestap.strftime('%B %d, %Y')}}
                         </div><!-- .posted-date -->
 
-                        <h2 class="entry-title">{form.title}</h2>
+                        <h2 class="entry-title">{{post.title}}</h2>
 
                         <div class="tags-links">
                             <a href="#">#winter</a>
@@ -34,7 +33,7 @@
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p>{ form.post_content }</p>
+                        <p>{{ post.post_content }}</p>
 
 
                         <blockquote class="blockquote-text">

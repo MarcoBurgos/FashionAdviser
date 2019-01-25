@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_dance.contrib.google import make_google_blueprint, google
 from sqlalchemy import func
@@ -80,22 +80,86 @@ def addpost():
         form = PostForm()
 
         if form.validate_on_submit():
-            # session['title'] = form.title.data
-            # session['subtitle'] = form.subtitle.data
-            # session['photo_url'] = form.photo_url.data
-            # session['section_type'] = form.section_type.data
-            # session['post_content'] = form.post_content.data
 
             post = Blog_posts(form.title.data, form.subtitle.data, form.photo_url.data, datetime.now(), form.post_content.data, form.section_type.data)
 
             db.session.add(post)
             db.session.commit()
 
-            return redirect(url_for("index"))
+            return redirect(url_for("preview"))
 
         return render_template('addpost.html', form=form)
     else:
         return render_template('not_authorized.html', email=email)
+
+@app.route("/dashboard/preview/")
+def preview():
+    if not google.authorized:
+        return redirect(url_for("login"))
+
+    resp = google.get("/oauth2/v2/userinfo")
+    assert resp.ok, resp.text
+    name = resp.json()["given_name"]
+    email = resp.json()['email']
+
+    if is_user_auth(email):
+        post_id = Blog_posts.query.order_by(Blog_posts.timestap.desc()).limit(1).one()
+        print(post_id.id)
+        post = Blog_posts.query.filter_by(id=post_id.id).one()
+        print(post.title)
+
+        return render_template('preview.html', post=post)
+
+
+
+@app.route("/editpost/<int:post_id>", methods=['GET', 'POST'])
+def editpost(post_id):
+    if not google.authorized:
+        return redirect(url_for("login"))
+
+    resp = google.get("/oauth2/v2/userinfo")
+    assert resp.ok, resp.text
+    name = resp.json()["given_name"]
+    email = resp.json()['email']
+
+    if is_user_auth(email):
+        post = Blog_posts.query.get(post_id)
+
+        form = PostForm(obj=post)
+
+
+        if form.validate_on_submit():
+
+            updated_post = Blog_posts.query.get(post_id)
+            updated_post.title = form.title.data
+            updated_post.subtitle = form.subtitle.data
+            updated_post.photo_url = form.photo_url.data
+            updated_post.section_type = form.section_type.data
+            updated_post.post_content = form.post_content.data
+
+            updated_post = db.session.merge(updated_post)
+
+            db.session.add(updated_post)
+            db.session.commit()
+
+            return redirect(url_for("dashboard"))
+
+        return render_template('addpost.html', post=post, form=form)
+    else:
+        return render_template('not_authorized.html', email=email)
+
+
+@app.route("/delete/<int:post_id>", methods=["GET", "POST"])
+def delete(post_id):
+    post = Blog_posts.query.get(post_id)
+    flash(f"Eliminaste post: {post_id}, con título {post.title}")
+    post = db.session.merge(post)
+    db.session.delete(post)
+    db.session.commit()
+
+    return redirect("/dashboard")
+
+
 
 
 @app.route("/dashboard")
