@@ -24,3 +24,9 @@ def blog_section(sec_name):
     print(f"Section name {sec_name}")
 
     return render_template('section.html', main_posts=main_posts, side_posts=side_posts, section_name=sec_name, count=count)
+
+
+@core.route('/google082e320c4857255c.html')
+def google_validator():
+
+    return render_template('google082e320c4857255c.html')
