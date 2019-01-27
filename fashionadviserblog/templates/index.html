@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="swiper-container hero-slider">
+                    <div class="swiper-wrapper">
+                        {% for post in main_posts %}
+                        <div class="swiper-slide">
+                            <div class="hero-content flex justify-content-center align-items-center flex-column">
+                                  <img src="{{ post.photo_url }}" class="featured-image-main">
+                              <div class="bottom-left">{{ post.title }}</div>
+                            </div><!-- .hero-content -->
+                        </div><!-- .swiper-slide -->
+                        {% endfor %}
+                    </div><!-- .swiper-wrapper -->
+
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next flex justify-content-center align-items-center">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z"></path></svg></span>
+                    </div>
+                    <div class="swiper-button-prev flex justify-content-center align-items-center">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z"></path></svg></span>
+                    </div>
+                </div><!-- .swiper-container -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+
+
+
+<!-- POST Main content -->
+    <div class="container single-page">
+        <div class="row">
+            <div class="col-12 col-lg-9">
+              {% for fpost in feature_post %}
+                <div class="content-wrap">
+                    <header class="entry-header">
+                        <div class="posted-date">
+                            {{fpost.post_timestamp.strftime('%B %d, %Y')}}
+                        </div><!-- .posted-date -->
+                        <h2 class="entry-title">{{fpost.title}}</h2>
+                        <div class="tags-links">
+                            <a href="#">#winter</a>
+                            <a href="#">#love</a>
+                            <a href="#">#snow</a>
+                            <a href="#">#january</a>
+                        </div><!-- .tags-links -->
+                    </header><!-- .entry-header -->
+                    <figure class="featured-image">
+                        <img src="{{fpost.photo_url}}" alt="">
+                    </figure><!-- .featured-image -->
+
+                    <div class="entry-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat. Proin nec interdum sem. Quisque in porttitor magna, a imperdiet est. </p>
+                    </div><!-- .entry-content -->
+
+                    <footer class="entry-footer flex flex-column flex-lg-row justify-content-between align-content-start align-lg-items-center">
+                        <!-- <ul class="post-share flex align-items-center order-3 order-lg-1">
+                            <label>Share</label>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul> -->
+                        <!-- .post-share -->
+
+                        <a class="read-more order-2" href="{{ url_for('blog_posts.post', post_id=fpost.id) }}">Read more</a>
+
+                        <!-- <div class="comments-count order-1 order-lg-3">
+                            <a href="#">2 Comments</a>
+                        </div> -->
+                        <!-- .comments-count -->
+                    </footer><!-- .entry-footer -->
+                </div><!-- .content-wrap -->
+                {% endfor %}
+
+
+                <div class="pagination">
+                    <ul class="flex align-items-center">
+                        <li class="active"><a href="#">01.</a></li>
+                        <li><a href="#">02.</a></li>
+                        <li><a href="#">03.</a></li>
+                    </ul>
+                </div>
+            </div><!-- .col -->
+
+            <div class="col-12 col-lg-3">
+                <div class="sidebar">
+                    <div class="about-me">
+                      <figure class="featured-image-about-me">
+                          <img src="{{url_for('static', filename='images/about.jpeg')}}">
+                      </figure>
+                      <h2 class="about-me">About Me</h2>
+                      <h3 class="about-me">I’m Nayeli</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat. Proin nec interdum sem. Quisque in porttitor magna.</p>
+                    </div><!-- .about-me -->
+
+                    <div class="header-bar-social d-none d-md-block">
+                        <ul class="flex align-items-center">
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div><!-- .header-bar-social -->
+
+                    <div class="recent-posts">
+
+                        {% for spost in side_posts %}
+                        <div class="recent-post-wrap">
+                            <figure>
+                                <img src="{{ spost.photo_url }}" alt="">
+                            </figure>
+
+                            <header class="entry-header">
+                                <div class="posted-date">
+                                    {{ spost.post_timestamp.strftime('%B %d, %Y') }}
+                                </div><!-- .entry-header -->
+
+                                <h3><a href="#">{{ spost.title }}</a></h3>
+
+                                <div class="tags-links">
+                                    <a href="#">#first</a>
+                                    <a href="#">#second</a>
+                                    <a href="#">#third</a>
+                                    <a href="#">#fourth</a>
+                                </div><!-- .tags-links -->
+                            </header><!-- .entry-header -->
+                        </div><!-- .recent-post-wrap -->
+                        {% endfor %}
+
+
+                    </div><!-- .recent-posts -->
+
+
+                    <div class="tags-list">
+                        <a href="#">Music</a>
+                        <a href="#">Love</a>
+                        <a href="#">Car</a>
+                        <a href="#">Stories</a>
+                        <a href="#">Photography</a>
+                        <a href="#">Music</a>
+                        <a href="#">Car</a>
+                    </div><!-- .tags-list -->
+                </div><!-- .sidebar -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</div><!-- .outer-container -->
+{% endblock %}
