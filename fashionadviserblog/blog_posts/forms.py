@@ -6,11 +6,11 @@ from wtforms import (StringField, BooleanField, DateTimeField,
 from wtforms.validators import DataRequired
 
 class PostForm(FlaskForm):
-    title = StringField('Título del post', validators=[DataRequired()])
-    subtitle = StringField('Sumario', validators=[DataRequired()])
-    photo_url = StringField("Ingresa la URL de la foto", validators=[DataRequired()])
+    title = StringField('Título del post:', validators=[DataRequired()])
+    subtitle = StringField('Sumario:', validators=[DataRequired()])
+    photo_url = StringField("Ingresa la URL de la foto:", validators=[DataRequired()])
     section_name = SelectField(u'Elige una categoría para el post:',
                           choices=[('Fashion', 'Fashion'), ('Beauty', 'Beauty'),
                                    ('Fitness', 'Fitness'), ('Lifestyle','Lifestyle')])
-    post_content = TextAreaField('Escribe el contenido del post',validators=[DataRequired()] )
+    post_content = TextAreaField('Escribe el contenido del post:',validators=[DataRequired()] )
     submit = SubmitField('Previsualizar')

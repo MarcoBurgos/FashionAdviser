@@ -699,6 +699,10 @@ a:hover, a:active {
   color: white;
 }
 
+.post-content-area textarea{
+  height: 800px !important
+}
+
 .container-table-dashboard {
   position: relative;
   text-align: center;
