@@ -1,8 +1,8 @@
 <br>
 <div class="container">
-  <a href="{{ url_for('dashboard') }}" class="btn btn-primary" style="margin-right: 15px">Confirmar y publicar post</a>
-  <a href="{{ url_for('editpost', post_id=post.id) }}" class="btn btn-warning" style="margin-right: 15px">Regresar a editar post</a>
-  <a href="{{ url_for('delete', post_id=post.id) }}" class="btn btn-danger">Descartar y borrar post</a>
+  <a href="{{ url_for('blog_posts.admin') }}" class="btn btn-primary" style="margin-right: 15px">Confirmar y publicar post</a>
+  <a href="{{ url_for('blog_posts.update_post', post_id=post.id) }}" class="btn btn-warning" style="margin-right: 15px">Regresar a editar post</a>
+  <a href="{{url_for('blog_posts.delete_post', post_id=post.id)}}" class="btn btn-danger">Descartar y borrar post</a>
 </div>
 
 {% extends "base.html"%}
@@ -19,7 +19,7 @@
                   </figure><!-- .featured-image -->
                     <header class="entry-header">
                         <div class="posted-date">
-                            {{post.timestap.strftime('%B %d, %Y')}}
+                            {{post.post_timestamp.strftime('%B %d, %Y')}}
                         </div><!-- .posted-date -->
 
                         <h2 class="entry-title">{{post.title}}</h2>

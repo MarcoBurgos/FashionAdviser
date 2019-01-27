@@ -13,4 +13,4 @@ class PostForm(FlaskForm):
                           choices=[('Fashion', 'Fashion'), ('Beauty', 'Beauty'),
                                    ('Fitness', 'Fitness'), ('Lifestyle','Lifestyle')])
     post_content = TextAreaField('Escribe el contenido del post',validators=[DataRequired()] )
-    submit = SubmitField('Post')
+    submit = SubmitField('Previsualizar')

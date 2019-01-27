@@ -34,7 +34,7 @@ def create_post():
             db.session.add(post)
             db.session.commit()
             flash(f"Creaste un post, id: {post.id}, título: {post.title}")
-            return redirect(url_for('blog_posts.admin'))
+            return redirect(url_for('blog_posts.preview_post', post_id=post.id))
 
         return render_template('create_post.html', form=form)
     else:
@@ -43,7 +43,6 @@ def create_post():
 
 @blog_posts.route('/post/<int:post_id>', methods=['GET', 'POST'])
 def post(post_id):
-    print(f"post id {post_id}")
     post = Blog_posts.query.get_or_404(post_id)
 
 
@@ -107,6 +106,14 @@ def delete_post(post_id):
         db.session.delete(post)
         db.session.commit()
     return redirect(url_for("blog_posts.admin"))
+
+
+@blog_posts.route('/preview/<int:post_id>', methods=['GET', 'POST'])
+def preview_post(post_id):
+    post = Blog_posts.query.get_or_404(post_id)
+
+
+    return render_template('preview.html', post=post)
 
 
 @blog_posts.route('/admin', methods = ['GET', 'POST'])
