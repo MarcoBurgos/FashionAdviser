@@ -9,8 +9,8 @@
                         {% for post in main_posts %}
                         <div class="swiper-slide">
                             <div class="hero-content flex justify-content-center align-items-center flex-column">
-                                  <img src="{{ post.photo_url }}" class="featured-image-main">
-                              <div class="bottom-left">{{ post.title }}</div>
+                                  <img src="{{ post.photo_url }}" class="featured-image-main" >
+                              <div href="{{ url_for('blog_posts.post', post_id=post.id) }}" class="bottom-left">{{ post.title }}</div>
                             </div><!-- .hero-content -->
                         </div><!-- .swiper-slide -->
                         {% endfor %}
@@ -55,7 +55,7 @@
                     </figure><!-- .featured-image -->
 
                     <div class="entry-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat. Proin nec interdum sem. Quisque in porttitor magna, a imperdiet est. </p>
+                        <p>{{ fpost.subtitle }} </p>
                     </div><!-- .entry-content -->
 
                     <footer class="entry-footer flex flex-column flex-lg-row justify-content-between align-content-start align-lg-items-center">
@@ -121,7 +121,7 @@
                                     {{ spost.post_timestamp.strftime('%B %d, %Y') }}
                                 </div><!-- .entry-header -->
 
-                                <h3><a href="#">{{ spost.title }}</a></h3>
+                                <h3><a href="{{ url_for('blog_posts.post', post_id=spost.id) }}">{{ spost.title }}</a></h3>
 
                                 <div class="tags-links">
                                     <a href="#">#first</a>
