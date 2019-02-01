@@ -38,9 +38,9 @@ def create_post():
 @blog_posts.route('/post/<int:post_id>', methods=['GET', 'POST'])
 def post(post_id):
     post = Blog_posts.query.get_or_404(post_id)
+    lines = (post.post_content).splitlines()
 
-
-    return render_template('post.html', post=post)
+    return render_template('post.html', post=post, lines=lines)
 
 
 @blog_posts.route('/<int:post_id>/update', methods=['GET', 'POST'])

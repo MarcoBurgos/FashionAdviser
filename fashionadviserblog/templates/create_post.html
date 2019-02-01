@@ -14,27 +14,27 @@
 
     <div class="form-group">
       {{ form.title.label (class='form-group', style="color:black") }}
-      {{ form.title (class='form-control') }}
+      {{ form.title (class='form-control', required="true") }}
     </div>
 
     <div class="form-group">
       {{ form.subtitle.label (class='form-group', style="color:black") }}
-      {{ form.subtitle (class='form-control') }}
+      {{ form.subtitle (class='form-control', required="true") }}
     </div>
 
     <div class="form-group">
       {{ form.photo_url.label (class='form-group', style="color:black") }}
-      {{ form.photo_url (class='form-control') }}
+      {{ form.photo_url (class='form-control', required="true") }}
     </div>
 
     <div class="form-group">
       {{ form.section_name.label (class='form-group', style="color:black") }}
-      {{ form.section_name (class='form-control') }}
+      {{ form.section_name (class='form-control', required="true") }}
     </div>
 
     <div class="form-group">
       {{ form.post_content.label (class='form-group', style="color:black") }}
-      {{ form.post_content (class='form-control', style="height:800px") }}
+      {{ form.post_content (class='form-control', style="height:800px", required="true") }}
     </div>
 
     <div class="form-group">

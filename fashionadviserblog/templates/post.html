@@ -25,12 +25,17 @@
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p>{{ post.post_content }}</p>
-
-
-                        <blockquote class="blockquote-text">
+                      {% for line in lines %}
+                        {% if "<p>" in line %}
+                          <p> {{line.replace("</p>", "").replace("<p>", "")}} </p>
+                        {%elif "<h3>" in line %}
+                          <h3> {{line.replace("</h3>", "").replace("<h3>", "")}} </h3>
+                        {%endif%}
+                      {% endfor %}
+                        <!-- <blockquote class="blockquote-text">
                             <p>Nullam non nisi ut dolor pellentesque eleifend. Aliquam commodo vitae risus malesuada varius. Nulla ornare lacus eu elit sollicitudin varius. Nulla aliquet ornare massa id tempor. Sed luctus dui non turpis sodales, ac tristique risus consequat. Donec tincidunt mi a magna rhoncus dapibus. Integer ut lectus euismod</p>
-                        </blockquote><!-- .blockquote-text -->
+                        </blockquote> -->
+                        <!-- .blockquote-text -->
 
                     </div><!-- .entry-content -->
 
