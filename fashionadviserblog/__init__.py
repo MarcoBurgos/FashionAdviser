@@ -43,8 +43,7 @@ blueprint_google = make_google_blueprint(
     offline=True,
     scope=["https://www.googleapis.com/auth/userinfo.email",
         "https://www.googleapis.com/auth/userinfo.profile",
-        "openid"]
-)
+        "openid"])
 
 ################################################################################################
 
