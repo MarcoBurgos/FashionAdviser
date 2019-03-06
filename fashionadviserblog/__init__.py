@@ -7,10 +7,11 @@ from flask_dance.contrib.google import make_google_blueprint, google
 #flask db init
 #flask db migrate  -m "message"
 #flask db upgrade
- #python app.py
+# os.environ["OAUTHLIB_RELAX_TOKEN_SCOPE"] = '1'
 #
 # #export OAUTHLIB_INSECURE_TRANSPORT=1
-# os.environ["OAUTHLIB_RELAX_TOKEN_SCOPE"] = '1'
+# export FLASK_ENV=development
+#python app.py
 
 
 app = Flask(__name__)
@@ -40,8 +41,9 @@ blueprint_google = make_google_blueprint(
     client_secret="p_PiTxEJQv8sjUk2o2RrYvbB",
     # reprompt_consent=True,
     offline=True,
-    scope=["https://www.googleapis.com/auth/plus.me",
-        "https://www.googleapis.com/auth/userinfo.email"]
+    scope=["https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "openid"]
 )
 
 ################################################################################################

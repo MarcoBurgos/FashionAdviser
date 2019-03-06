@@ -30,3 +30,14 @@ def blog_section(sec_name):
 def google_validator():
 
     return render_template('google082e320c4857255c.html')
+
+
+@core.route('/post_circulator')
+def post_circulator():
+
+    post = Blog_posts.query.get_or_404(12)
+    p = Blog_posts.query.get_or_404(11)
+    po = Blog_posts.query.get_or_404(6)
+    lines = (post.post_content).splitlines()
+
+    return render_template('post_circulator.html', post=post, p=p, po=po, lines=lines)
