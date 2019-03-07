@@ -24,7 +24,7 @@
 body {
     color: #2f2f2f;
     font-family: 'HelveticaNeueLTPro-Md';
-    background-image: url('images/leaves.png');
+    /*background-image: url('images/leaves.png');*/
     background-repeat: repeat;
 
 }
@@ -39,7 +39,7 @@ img {
 # Links
 --------------------------------------------------------------*/
 a {
-    color: royalblue;
+    color: black;
 }
 
 a:visited {
@@ -47,7 +47,8 @@ a:visited {
 }
 
 a:hover, a:focus, a:active {
-    color: midnightblue;
+    color: royalblue;
+    text-decoration: none;
 }
 
 a:focus {
@@ -799,11 +800,21 @@ a:hover, a:active {
 --------------------------------------------------------------*/
 .about-page .content-wrap p,
 .blog-page .content-wrap p {
-    margin-bottom: 34px;
+    margin-bottom: 25px;
 }
 
 .blog-page-half-img {
     margin: 52px 0 0;
+}
+
+.blog-paragraph {
+  text-align: left;
+  font-size: 18px;
+  line-height: 140%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
 
 .blog-page-half-img img {
