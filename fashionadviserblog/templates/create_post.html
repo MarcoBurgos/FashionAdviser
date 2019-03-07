@@ -5,6 +5,7 @@
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -26,7 +27,7 @@
 
     <!-- include summernote css/js-->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.7.0/summernote.css" rel="stylesheet">
-
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.7.0/summernote.js"></script>
 
 </head>
 <body>
@@ -147,12 +148,10 @@
 });
   });
 </script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script type='text/javascript' src="{{ url_for('static', filename='js/jquery.js')}}"></script>
 <script type='text/javascript' src="{{ url_for('static', filename='js/swiper.min.js')}}"></script>
 <script type='text/javascript' src="{{ url_for('static', filename='js/custom.js')}}"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.7.0/summernote.js"></script>
+
 
 </body>
 </html>
