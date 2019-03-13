@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -13,11 +14,11 @@ from flask_dance.contrib.google import make_google_blueprint, google
 # export FLASK_ENV=development
 #python app.py
 
-
+load_dotenv()
 app = Flask(__name__)
 
 
-app.config['SECRET_KEY'] = 'TFA20191601'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 
 ################################################
@@ -38,12 +39,14 @@ Migrate(app, db)
 
 blueprint_google = make_google_blueprint(
     client_id="930782827177-m6l1onmtdkau9ua2acoggl87cof130fs.apps.googleusercontent.com",
-    client_secret="p_PiTxEJQv8sjUk2o2RrYvbB",
+    client_secret=os.environ.get('CLIENT_SECRET'),
     # reprompt_consent=True,
     offline=True,
     scope=["https://www.googleapis.com/auth/userinfo.email",
         "https://www.googleapis.com/auth/userinfo.profile",
         "openid"])
+
+print(f"key from env {os.environ.get('CLIENT_SECRET')}")
 
 ################################################################################################
 
