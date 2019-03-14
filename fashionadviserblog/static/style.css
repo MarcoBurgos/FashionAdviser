@@ -745,6 +745,42 @@ a:hover, a:active {
   text-shadow: 2px 2px 2px #000000;
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .bottom-left h1{
+    font-size: 2.5rem;
+
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .bottom-left h1{
+    font-size: 3.0rem;;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .bottom-left h1{
+    font-size: 4.0rem;;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .bottom-left h1{
+    font-size: 5.0rem;;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .bottom-left h1{
+    font-size: 6.0rem;;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # About Page

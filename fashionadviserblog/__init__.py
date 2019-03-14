@@ -10,6 +10,7 @@ from flask_dance.contrib.google import make_google_blueprint, google
 #flask db upgrade
 # os.environ["OAUTHLIB_RELAX_TOKEN_SCOPE"] = '1'
 # pip freeze > requirements.txt
+#heroku run printenv
 # #export OAUTHLIB_INSECURE_TRANSPORT=1
 # export FLASK_ENV=development
 #python app.py
@@ -26,7 +27,10 @@ app.config['ELASTICSEARCH_URL'] = os.environ.get('ELASTICSEARCH_URL')
 #################Database setup#################
 ################################################
 basedir = os.path.abspath(os.path.dirname(__file__ ))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'blog_posts.db')
+#app.config['SQLALCHEMY_DATABASE_URI'] = or 'sqlite:///' + os.path.join(basedir, 'blog_posts.db')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, 'blog_posts.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -46,7 +50,7 @@ blueprint_google = make_google_blueprint(
         "https://www.googleapis.com/auth/userinfo.profile",
         "openid"])
 
-print(f"key from env {os.environ.get('CLIENT_SECRET')}")
+
 
 ################################################################################################
 
