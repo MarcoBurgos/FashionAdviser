@@ -26,7 +26,6 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 ################################################
 basedir = os.path.abspath(os.path.dirname(__file__ ))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'blog_posts.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'blog_posts.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
