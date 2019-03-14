@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_dance.contrib.google import make_google_blueprint, google
@@ -11,7 +11,7 @@ from flask_dance.contrib.google import make_google_blueprint, google
 # os.environ["OAUTHLIB_RELAX_TOKEN_SCOPE"] = '1'
 # pip freeze > requirements.txt
 #heroku run printenv
-# #export OAUTHLIB_INSECURE_TRANSPORT=1
+# export OAUTHLIB_INSECURE_TRANSPORT=1
 # export FLASK_ENV=development
 #python app.py
 
@@ -44,7 +44,8 @@ Migrate(app, db)
 blueprint_google = make_google_blueprint(
     client_id="930782827177-m6l1onmtdkau9ua2acoggl87cof130fs.apps.googleusercontent.com",
     client_secret=os.environ.get('CLIENT_SECRET'),
-    # reprompt_consent=True,
+    reprompt_consent=True,
+    redirect_to = 'blog_posts.admin',
     offline=True,
     scope=["https://www.googleapis.com/auth/userinfo.email",
         "https://www.googleapis.com/auth/userinfo.profile",
