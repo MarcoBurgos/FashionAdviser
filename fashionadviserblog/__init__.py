@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-app.config.['ELASTICSEARCH_URL'] = os.environ.get('ELASTICSEARCH_URL')
+app.config['ELASTICSEARCH_URL'] = os.environ.get('ELASTICSEARCH_URL')
 
 
 ################################################
