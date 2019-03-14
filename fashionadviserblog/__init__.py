@@ -9,7 +9,7 @@ from flask_dance.contrib.google import make_google_blueprint, google
 #flask db migrate  -m "message"
 #flask db upgrade
 # os.environ["OAUTHLIB_RELAX_TOKEN_SCOPE"] = '1'
-#
+# pip freeze > requirements.txt
 # #export OAUTHLIB_INSECURE_TRANSPORT=1
 # export FLASK_ENV=development
 #python app.py
@@ -19,6 +19,7 @@ app = Flask(__name__)
 
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config.['ELASTICSEARCH_URL'] = os.environ.get('ELASTICSEARCH_URL')
 
 
 ################################################
