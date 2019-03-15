@@ -65,16 +65,10 @@
                         <div class="posted-date">
                             {{post.post_timestamp.strftime('%B %d, %Y')}}
                         </div><!-- .posted-date -->
-                        <h1 class="entry-title">{{post.title}}</h1>
-                        <div class="tags-links">
-                            <a href="#">#winter</a>
-                            <a href="#">#love</a>
-                            <a href="#">#snow</a>
-                            <a href="#">#january</a>
-                        </div><!-- .tags-links -->
+                        <h1 class="entry-title"> <a href="{{ url_for('blog_posts.post', post_id=post.id) }}">{{post.title}}</a></h1>
                     </header><!-- .entry-header -->
                     <figure class="featured-image">
-                        <img src="{{post.photo_url}}" alt="">
+                        <a href="{{ url_for('blog_posts.post', post_id=post.id) }}"><img src="{{post.photo_url}}" alt="Imagen del post"></a>
                     </figure><!-- .featured-image -->
 
                     <div class="entry-content">
@@ -147,29 +141,12 @@
                                     {{ spost.post_timestamp.strftime('%B %d, %Y') }}
                                 </div><!-- .entry-header -->
 
-                                <h3><a href="#">{{ spost.title }}</a></h3>
+                                <h3><a href="{{ url_for('blog_posts.post', post_id=spost.id) }}">{{ spost.title }}</a></h3>
 
-                                <div class="tags-links">
-                                    <a href="#">#first</a>
-                                    <a href="#">#second</a>
-                                    <a href="#">#third</a>
-                                    <a href="#">#fourth</a>
-                                </div><!-- .tags-links -->
                             </header><!-- .entry-header -->
                         </div><!-- .recent-post-wrap -->
                         {% endfor %}
                     </div><!-- .recent-posts -->
-
-
-                    <div class="tags-list">
-                        <a href="#">Music</a>
-                        <a href="#">Love</a>
-                        <a href="#">Car</a>
-                        <a href="#">Stories</a>
-                        <a href="#">Photography</a>
-                        <a href="#">Music</a>
-                        <a href="#">Car</a>
-                    </div><!-- .tags-list -->
 
                 </div><!-- .sidebar -->
             </div><!-- .col -->

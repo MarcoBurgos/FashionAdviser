@@ -579,7 +579,7 @@ a:hover, a:active {
 }
 
 .single-page .content-wrap .entry-content {
-    margin-top: 36px;
+    margin-top: 15px;
 }
 
 .single-page .content-wrap .entry-content p {
@@ -603,7 +603,7 @@ a:hover, a:active {
 }
 
 .single-page .content-wrap .entry-footer {
-    margin-top: 50px;
+    margin-top: 35px;
 }
 
 .post-share,
@@ -749,8 +749,90 @@ a:hover, a:active {
 @media only screen and (max-width: 600px) {
   .bottom-left h1{
     font-size: 2.5rem;
-
   }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .single-page .content-wrap .entry-title {
+    margin-top: 12px;
+    font-size: 200%;
+    color: #2f2f2f;
+    font-weight: bold;
+}
+
+  .bottom-left {
+    position: initial;
+    bottom: 0px;
+    left: 0px;
+    font-family: 'Arial Black';
+    color: black;
+    text-shadow: 0px 0px 0px #000000;
+  }
+
+  .site-navigation {
+    margin-top: 0px;
+  }
+
+  .single-page {
+    padding-top: 0px;
+    padding-bottom: 100px;
+}
+
+.content-wrap a.read-more {
+  display: block;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 0px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1;
+  background: #2f2f2f;
+}
+
+ ul {
+   list-style-type: none;
+    padding: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.justify-content-center {
+    justify-content:space-around !important;
+}
+
+.pagination {
+    margin-top: 50px;
+}
+
+.active {
+  background: bisque;
+  padding: 5px;
+}
+
+.single-page .sidebar {
+    margin-top: 50px;
+}
+
+.single-page .content-wrap .entry-footer {
+    margin-top: 0px;
+}
+
+.footer-p {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.footer-copyright {
+  background: black;
+  color: white;
+  padding: 15px;
+}
+
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -765,6 +847,15 @@ a:hover, a:active {
   .bottom-left h1{
     font-size: 4.0rem;;
   }
+  .bottom-left {
+    bottom: 50px;
+    left: 100px;
+  }
+
+  .single-page {
+    padding-top: 0px;
+    padding-bottom: 100px;
+}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -1149,7 +1240,7 @@ a:hover, a:active {
 }
 
 .recent-post-wrap .posted-date {
-    margin-top: 26px;
+    margin-top: 10px;
     font-size: 11px;
     letter-spacing: 0.08rem;
     text-transform: uppercase;

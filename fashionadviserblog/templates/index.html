@@ -9,14 +9,16 @@
                         {% for post in main_posts %}
                         <div class="swiper-slide">
                             <div class="hero-content flex justify-content-center align-items-center flex-column">
-                                  <a href="{{ url_for('blog_posts.post', post_id=post.id) }}"><img src="{{ post.photo_url }}" class="featured-image-main" >
-                              <div class="bottom-left">
+                                  <a href="{{ url_for('blog_posts.post', post_id=post.id) }}">
+                                    <img src="{{ post.photo_url }}" class="featured-image-main" >
+                                  </a>
+                              <div class="bottom-left"><a href="#"></a>
                                 <h1>{{ post.title }}</h1>
                               </div>
-                            </div><!-- .hero-content -->
-                        </div><!-- .swiper-slide -->
+                            </div>
+                        </div>
                         {% endfor %}
-                    </div><!-- .swiper-wrapper -->
+                    </div>
 
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
@@ -28,9 +30,9 @@
                     <div class="swiper-button-prev flex justify-content-center align-items-center">
                         <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z"></path></svg></span>
                     </div>
-                </div><!-- .swiper-container -->
-            </div><!-- .col -->
-        </div><!-- .row -->
+                </div>
+            </div>
+        </div>
 
 
 
@@ -41,54 +43,37 @@
               {% for fpost in feature_post %}
                 <div class="content-wrap">
                     <header class="entry-header">
-                        <div class="posted-date">
-                            {{fpost.post_timestamp.strftime('%B %d, %Y')}}
-                        </div><!-- .posted-date -->
+                        <h4 class="posted-date">{{fpost.post_timestamp.strftime('%B %d, %Y')}}</h4>
                         <h2 class="entry-title">{{fpost.title}}</h2>
-                        <div class="tags-links">
-                            <a href="#">#winter</a>
-                            <a href="#">#love</a>
-                            <a href="#">#snow</a>
-                            <a href="#">#january</a>
-                        </div><!-- .tags-links -->
-                    </header><!-- .entry-header -->
+                    </header>
                     <figure class="featured-image">
-                        <a href="{{ url_for('blog_posts.post', post_id=fpost.id) }}"><img src="{{fpost.photo_url}}" alt="Foto del post">
-                    </figure><!-- .featured-image -->
+                        <a href="{{ url_for('blog_posts.post', post_id=fpost.id) }}">
+                          <img src="{{fpost.photo_url}}" alt="Foto del post">
+                        </a>
+                    </figure>
 
                     <div class="entry-content">
                         <p>{{ fpost.subtitle }} </p>
-                    </div><!-- .entry-content -->
+                    </div>
 
                     <footer class="entry-footer flex flex-column flex-lg-row justify-content-between align-content-start align-lg-items-center">
-                        <!-- <ul class="post-share flex align-items-center order-3 order-lg-1">
-                            <label>Share</label>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul> -->
-                        <!-- .post-share -->
+
 
                         <a class="read-more order-2" href="{{ url_for('blog_posts.post', post_id=fpost.id) }}">Read more</a>
 
-                        <!-- <div class="comments-count order-1 order-lg-3">
-                            <a href="#">2 Comments</a>
-                        </div> -->
-                        <!-- .comments-count -->
-                    </footer><!-- .entry-footer -->
-                </div><!-- .content-wrap -->
+                    </footer>
+                </div>
                 {% endfor %}
 
 
                 <div class="pagination">
                     <ul class="flex align-items-center">
-                        <li class="active"><a href="#">01.</a></li>
-                        <li><a href="#">02.</a></li>
-                        <li><a href="#">03.</a></li>
+                        <li class="active" style="margin-right: 15px;"><a href="#">01.</a></li>
+                        <li style="margin-right: 15px;"><a href="#">02.</a></li>
+                        <li style="margin-right: 15px;"><a href="#">03.</a></li>
                     </ul>
                 </div>
-            </div><!-- .col -->
+            </div>
 
             <div class="col-12 col-lg-3">
                 <div class="sidebar">
@@ -109,49 +94,33 @@
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
-                    </div><!-- .header-bar-social -->
+                    </div>
 
                     <div class="recent-posts">
 
                         {% for spost in side_posts %}
                         <div class="recent-post-wrap">
                             <figure>
+                              <a href="{{ url_for('blog_posts.post', post_id=spost.id) }}">
                                 <img src="{{ spost.photo_url }}" alt="">
+                              </a>
                             </figure>
 
                             <header class="entry-header">
                                 <div class="posted-date">
                                     {{ spost.post_timestamp.strftime('%B %d, %Y') }}
-                                </div><!-- .entry-header -->
-
-                                <h3><a href="{{ url_for('blog_posts.post', post_id=spost.id) }}">{{ spost.title }}</a></h3>
-
-                                <div class="tags-links">
-                                    <a href="#">#first</a>
-                                    <a href="#">#second</a>
-                                    <a href="#">#third</a>
-                                    <a href="#">#fourth</a>
-                                </div><!-- .tags-links -->
-                            </header><!-- .entry-header -->
-                        </div><!-- .recent-post-wrap -->
+                                </div>
+                                <h3 class="entry-title" style="color:black; font-weight: bold;">{{ spost.title }}</h3>
+                                <div class="entry-content" style="color:#afafaf;">
+                                    <p>{{ spost.subtitle }} </p>
+                                </div>
+                            </header>
+                        </div>
                         {% endfor %}
-
-
-                    </div><!-- .recent-posts -->
-
-
-                    <div class="tags-list">
-                        <a href="#">Music</a>
-                        <a href="#">Love</a>
-                        <a href="#">Car</a>
-                        <a href="#">Stories</a>
-                        <a href="#">Photography</a>
-                        <a href="#">Music</a>
-                        <a href="#">Car</a>
-                    </div><!-- .tags-list -->
-                </div><!-- .sidebar -->
-            </div><!-- .col -->
-        </div><!-- .row -->
-    </div><!-- .container -->
-</div><!-- .outer-container -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
