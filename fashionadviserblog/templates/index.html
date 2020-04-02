@@ -1,126 +1,97 @@
 {% extends "base.html" %}
-{% block content %}
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="swiper-container hero-slider">
-                    <div class="swiper-wrapper">
-                        {% for post in main_posts %}
-                        <div class="swiper-slide">
-                            <div class="hero-content flex justify-content-center align-items-center flex-column">
-                                  <a href="{{ url_for('blog_posts.post', post_id=post.id) }}">
-                                    <img src="{{ post.photo_url }}" class="featured-image-main" >
-                                  </a>
-                              <div class="bottom-left"><a href="#"></a>
-                                <h1>{{ post.title }}</h1>
-                              </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
 
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
+{% block head %}
 
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next flex justify-content-center align-items-center">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z"></path></svg></span>
-                    </div>
-                    <div class="swiper-button-prev flex justify-content-center align-items-center">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z"></path></svg></span>
-                    </div>
-                </div>
-            </div>
+  <!--================Header Menu Area =================-->
+
+  <main class="site-main">
+    <!--================Hero Banner start =================-->
+    <section class="mb-30px">
+      <div class="container">
+        <div class="hero-banner" style="background-image: url({{ url_for('static', filename='images/bg.jpg') }})">
+          <div class="hero-banner__content">
+            <a class="navbar-brand logo_h" href="{{ url_for('section.index') }}"><img src="{{ url_for('static', filename='images/logo.png')}}" alt="Logo Fashion Adviser"></a>
+            <!-- <h1>Fashion Adviser</h1> -->
+            <!-- <h3>Personal Blog</h3> -->
+          </div>
         </div>
+      </div>
+    </section>
+    <!--================Hero Banner end =================-->
 
-
-
-<!-- POST Main content -->
-    <div class="container single-page">
-        <div class="row">
-            <div class="col-12 col-lg-9">
-              {% for fpost in feature_post %}
-                <div class="content-wrap">
-                    <header class="entry-header">
-                        <h4 class="posted-date">{{fpost.post_timestamp.strftime('%B %d, %Y')}}</h4>
-                        <h2 class="entry-title">{{fpost.title}}</h2>
-                    </header>
-                    <figure class="featured-image">
-                        <a href="{{ url_for('blog_posts.post', post_id=fpost.id) }}">
-                          <img src="{{fpost.photo_url}}" alt="Foto del post">
-                        </a>
-                    </figure>
-
-                    <div class="entry-content">
-                        <p>{{ fpost.subtitle }} </p>
-                    </div>
-
-                    <footer class="entry-footer flex flex-column flex-lg-row justify-content-between align-content-start align-lg-items-center">
-
-
-                        <a class="read-more order-2" href="{{ url_for('blog_posts.post', post_id=fpost.id) }}">Read more</a>
-
-                    </footer>
-                </div>
-                {% endfor %}
-
-
-                <div class="pagination">
-                    <ul class="flex align-items-center">
-                        <li class="active" style="margin-right: 15px;"><a href="#">01.</a></li>
-                        <li style="margin-right: 15px;"><a href="#">02.</a></li>
-                        <li style="margin-right: 15px;"><a href="#">03.</a></li>
-                    </ul>
-                </div>
+    <!--================ Blog slider start =================-->
+    <section>
+      <div class="container">
+        <div class="owl-carousel owl-theme blog-slider">
+          {% for post in main_posts %}
+          <div class="card blog__slide text-center">
+            <div class="blog__slide__img">
+              <img class="card-img rounded-0" src="{{ post.photo_url }}" style="height:230px; background-size: cover; background:center;" alt="Foto del post">
             </div>
+            <div class="blog__slide__content">
+              <a class="blog__slide__label" href="{{ url_for('blog_posts.post', post_id=post.id) }}">{{ post.section_name}}</a>
+              <h3><a href="{{ url_for('blog_posts.post', post_id=post.id) }}">{{post.title}}</a></h3>
+              <p>{{ post.subtitle }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!--================ Blog slider end =================-->
+        {% endblock %}
 
-            <div class="col-12 col-lg-3">
-                <div class="sidebar">
-                    <div class="about-me">
-                      <figure class="featured-image-about-me">
-                          <img src="{{url_for('static', filename='images/about.jpeg')}}">
-                      </figure>
-                      <h2 class="about-me">About Me</h2>
-                      <h3 class="about-me">Angie Zcoln</h3>
-                      <p>Soy Angie Zcoln, una amante de la moda y desde que tengo memoria me gustan combinar prendas y estar al pendiente de las nuevas tendencias. Lamentablemente, esta industria es en la actualidad uno de los mayores contaminantes del planeta, por lo que me he convertido en una persona más consciente y busco sacarle el mayor provecho a mis prendas, así como tener un consumo sustentable.</p>
-                      <p>Aunque al inicio era una shopaholic, hoy en día quiero compartir mis conocimientos y, así, juntos lograr un cambio en el mundo fashionista.</p>
-                    </div><!-- .about-me -->
+    <!--================ Start Blog Post Area =================-->
+    <section class="blog-post-area section-margin mt-4">
+      <div class="container">
+        <div class="row">
+            {% block content %}
+          <div class="col-lg-8">
+            {% for fpost in feature_post %}
+            <div class="single-recent-blog-post">
+              <div class="thumb">
+                <img class="img-fluid" style="height: 540px; width: 730px; object-fit: cover"src="{{ fpost.photo_url }}" alt="">
+                <ul class="thumb-info">
+                  <li><a href=""><i class="ti-user"></i>Angie Zcoln</a></li>
+                  <li><a href=""><i class="ti-notepad"></i>{{ fpost.post_timestamp.strftime('%B %d, %Y') }}</a></li>
+                </ul>
+              </div>
+              <div class="details mt-20">
+                <a href="blog-single.html">
+                  <h3>{{ fpost.title }}</h3>
+                </a>
+                <p>{{ fpost.subtitle }}</p>
+                <a class="button" href="{{ url_for('blog_posts.post', post_id=fpost.id) }}">Leer más <i class="ti-arrow-right"></i></a>
+              </div>
+            </div>
+            {% endfor %}
 
-                    <div class="header-bar-social d-none d-md-block">
-                        <ul class="flex align-items-center">
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="recent-posts">
-
-                        {% for spost in side_posts %}
-                        <div class="recent-post-wrap">
-                            <figure>
-                              <a href="{{ url_for('blog_posts.post', post_id=spost.id) }}">
-                                <img src="{{ spost.photo_url }}" alt="">
+            <div class="row">
+              <div class="col-lg-12">
+                  <nav class="blog-pagination justify-content-center d-flex">
+                      <ul class="pagination">
+                          <li class="page-item">
+                              <a href="" class="page-link" aria-label="Previous">
+                                  <span aria-hidden="true">
+                                      <i class="ti-angle-left"></i>
+                                  </span>
                               </a>
-                            </figure>
-
-                            <header class="entry-header">
-                                <div class="posted-date">
-                                    {{ spost.post_timestamp.strftime('%B %d, %Y') }}
-                                </div>
-                                <h3 class="entry-title" style="color:black; font-weight: bold;">{{ spost.title }}</h3>
-                                <div class="entry-content" style="color:#afafaf;">
-                                    <p>{{ spost.subtitle }} </p>
-                                </div>
-                            </header>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
+                          </li>
+                          <li class="page-item active"><a href="" class="page-link">1</a></li>
+                          <!-- <li class="page-item"><a href="#" class="page-link">2</a></li> -->
+                          <li class="page-item">
+                              <a href="" class="page-link" aria-label="Next">
+                                  <span aria-hidden="true">
+                                      <i class="ti-angle-right"></i>
+                                  </span>
+                              </a>
+                          </li>
+                      </ul>
+                  </nav>
+              </div>
             </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
+          </div>
+          {% endblock %}
+
+        

@@ -1,96 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>The Fashion Adviser</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The Fashion Adviser v2</title>
+	<link rel="icon" href="{{ url_for('static', filename='images/favicon.png')}}" type="image/png">
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendors/bootstrap/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendors/fontawesome/css/all.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendors/themify-icons/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendors/linericon/style.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendors/owl-carousel/owl.theme.default.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendors/owl-carousel/owl.carousel.min.css')}}">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
-
-    <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css')}}">
-
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/swiper.min.css')}}">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
 </head>
 <body>
-<div class="outer-container">
-    <header class="site-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="site-branding flex flex-column align-items-center">
-                        <figure class="branding-image">
-                            <img src="{{ url_for('static', filename='images/logo.png')}}" alt=""><a href="index.html" rel="home"></a></img>
-                        </figure>
-                        <p class="site-description">Personal Blog</p>
-                    </div>
-
-                    <nav class="site-navigation">
-                        <div class="hamburger-menu d-lg-none">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-
-                        <ul class="flex-lg flex-lg-row justify-content-lg-center align-content-lg-center">
-                            <li class="current-menu-item"><a href="{{ url_for('section.index') }}">Home</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Fashion') }}">Fashion</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Beauty') }}">Beauty</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Fitness') }}">Fitness</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Lifestyle') }}">Lifestyle</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Shop') }}">Shop</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+  <!--================Header Menu Area =================-->
+  <header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container box_1620">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand logo_h" href="{{ url_for('section.index') }}"><img src="{{ url_for('static', filename='images/brand.png')}}" alt="Logo Fashion Adviser"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav justify-content-center">
+              <li class="nav-item active"><a class="nav-link" href="{{ url_for('section.index') }}">Inicio</a></li>
+              <li class="nav-item"><a  class="nav-link" href="{{ url_for('section.blog_section', sec_name='Fashion') }}">Fashion</a></li>
+              <li class="nav-item"><a  class="nav-link" href="{{ url_for('section.blog_section', sec_name='Lifestyle') }}">Lifestyle</a></li>
+              <li class="nav-item"><a  class="nav-link" href="{{ url_for('section.blog_section', sec_name='News') }}">News</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-social">
+              <li><a href="#"><i class="ti-facebook"></i></a></li>
+              <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+              <li><a href="#"><i class="ti-instagram"></i></a></li>
+            </ul>
+          </div>
         </div>
-    </header>
+      </nav>
+    </div>
+  </header>
 
-    {% block content %}
+    {% block head %}
 
     {% endblock %}
 
-    <div class="footer-bar">
-        <div class="outer-container">
-            <div class="container-fluid">
-                <div class="row justify-content-between">
-                    <div class="col-12 col-md-6">
-                        <div class="footer-copyright">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            <p class="footer-p">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </div>
-                    </div>
+    <!--================ Blog slider start =================-->
 
-                    <div class="col-12 col-md-6">
-                        <div class="footer-social">
-                            <ul class="flex justify-content-center justify-content-md-end align-items-center">
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="{{ url_for('blog_posts.admin') }}"><i class="fa fa-id-badge"></i></a></li>
-                            </ul>
-                        </div>
+    <!--================ Blog slider end =================-->
+
+    <!--================ Start Blog Post Area =================-->
+    <section class="blog-post-area section-margin mt-4">
+      <div class="container">
+        <div class="row">
+          {% block content %}
+
+          {% endblock %}
+
+          <!-- Start Blog Post Siddebar -->
+          <div class="col-lg-4 sidebar-widgets">
+              <div class="widget-wrap">
+                <div class="single-sidebar-widget newsletter-widget">
+                  <h4 class="single-sidebar-widget__title">Newsletter</h4>
+                  <div class="form-group mt-30">
+                    <div class="col-autos">
+                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Ingresa tu correo electrónico'">
                     </div>
+                  </div>
+                  <button class="bbtns d-block mt-20 w-100">Boletín</button>
                 </div>
+
+
+                <div class="single-sidebar-widget post-category-widget">
+                  <h4 class="single-sidebar-widget__title">Secciones</h4>
+                  <ul class="cat-list mt-20">
+                    <li>
+                      <a href="#" class="d-flex justify-content-between">
+                        <p>Fashion</p>
+                        <p>({{ fashion_count }})</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="d-flex justify-content-between">
+                        <p>Lifestyle</p>
+                        <p>({{ lifestyle_count }})</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="d-flex justify-content-between">
+                        <p>News</p>
+                        <p>({{ news_count }})</p>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                </div>
+              </div>
             </div>
+          <!-- End Blog Post Siddebar -->
         </div>
+    </section>
+    <!--================ End Blog Post Area =================-->
+  </main>
+
+  <!--================ Start Footer Area =================-->
+  <footer class="footer-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3  col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h6>Acerca de mí</h6>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+              magna aliqua.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4  col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h6>Boletín</h6>
+            <p>Mantente informado</p>
+            <div class="" id="mc_embed_signup">
+
+              <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                method="get" class="form-inline">
+
+                <div class="d-flex flex-row">
+
+                  <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                    required="" type="email">
+
+
+                  <button class="click-btn btn btn-default"><span class="lnr lnr-arrow-right"></span></button>
+                  <div style="position: absolute; left: -5000px;">
+                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                  </div>
+
+                  <!-- <div class="col-lg-4 col-md-4">
+                        <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
+                      </div>  -->
+                </div>
+                <div class="info"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3  col-md-6 col-sm-6">
+          <div class="single-footer-widget mail-chimp">
+            <h6 class="mb-20">Instragram Feed</h6>
+            <ul class="instafeed d-flex flex-wrap">
+              <li><img src="img/instagram/i1.jpg" alt=""></li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h6>Sígueme</h6>
+            <p>En mis redes sociales</p>
+            <div class="footer-social d-flex align-items-center">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-dribbble"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-behance"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+        <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        <li><a href="{{ url_for('blog_posts.admin') }}"><i class="fa fa-id-badge"></i></a></li>
+      </div>
     </div>
-</footer>
-
-<script type='text/javascript' src="{{ url_for('static', filename='js/jquery.js')}}"></script>
-<script type='text/javascript' src="{{ url_for('static', filename='js/swiper.min.js')}}"></script>
-<script type='text/javascript' src="{{ url_for('static', filename='js/custom.js')}}"></script>
+  </footer>
+  <!--================ End Footer Area =================-->
 
 
+  <script src="{{ url_for('static', filename='vendors/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendors/bootstrap/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendors/owl-carousel/owl.carousel.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.ajaxchimp.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/mail-script.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/main.js')}}"></script>
 </body>
 </html>

@@ -38,9 +38,13 @@ def create_post():
 @blog_posts.route('/post/<int:post_id>', methods=['GET', 'POST'])
 def post(post_id):
     post = Blog_posts.query.get_or_404(post_id)
+    fashion_count = db.session.query(Blog_posts).filter(Blog_posts.section_name=='Fashion').count()
+    lifestyle_count = db.session.query(Blog_posts).filter(Blog_posts.section_name=='Lifestyle').count()
+    news_count = db.session.query(Blog_posts).filter(Blog_posts.section_name=='News').count()
 
 
-    return render_template('post.html', post=post)
+    return render_template('post.html', post=post, fashion_count=fashion_count, lifestyle_count=lifestyle_count, news_count=news_count )
+
 
 
 @blog_posts.route('/<int:post_id>/update', methods=['GET', 'POST'])
@@ -101,6 +105,7 @@ def preview_post(post_id):
 
     else:
         abort(403)
+
 
 
 @blog_posts.route('/admin', methods = ['GET', 'POST'])

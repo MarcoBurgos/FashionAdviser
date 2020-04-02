@@ -1,5 +1,4 @@
 #!/Users/marcoburgos/Desktop/website/The_Fashion_Adviser/FA-env/bin/python3
-
 # -*- coding: utf-8 -*-
 import re
 import sys

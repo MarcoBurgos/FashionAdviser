@@ -39,26 +39,7 @@
                         <figure class="branding-image">
                             <img src="{{ url_for('static', filename='images/logo.png')}}" alt=""><a href="index.html" rel="home"></a></img>
                         </figure><!-- .featured-image -->
-                        <p class="site-description">Personal Blog</p>
                     </div><!-- .site-branding -->
-
-                    <nav class="site-navigation">
-                        <div class="hamburger-menu d-lg-none">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div><!-- .hamburger-menu -->
-
-                        <ul class="flex-lg flex-lg-row justify-content-lg-center align-content-lg-center">
-                            <li class="current-menu-item"><a href="{{ url_for('section.index') }}">Home</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Fashion') }}">Fashion</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Beauty') }}">Beauty</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Fitness') }}">Fitness</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Lifestyle') }}">Lifestyle</a></li>
-                            <li><a href="{{ url_for('section.blog_section', sec_name='Shop') }}">Shop</a></li>
-                        </ul>
-                    </nav><!-- .site-navigation -->
                 </div><!-- .col -->
             </div><!-- .row -->
         </div><!-- .container -->
@@ -140,11 +121,18 @@
 <script>
   $(document).ready(function() {
     $('#summernote').summernote({
-  height: 600,
-  minHeight: null,
-  maxHeight: null,
-  focus: false
-});
+      height: 600,
+      minHeight: null,
+      maxHeight: null,
+      focus: false,
+      toolbar: [
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['fontname', ['fontname']],
+        ['para', ['ul', 'ol', 'paragraph']],
+      ]
+    }, 'fontSize', 36);
   });
 </script>
 <script type='text/javascript' src="{{ url_for('static', filename='js/jquery.js')}}"></script>

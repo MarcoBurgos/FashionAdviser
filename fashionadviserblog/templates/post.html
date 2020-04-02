@@ -1,49 +1,100 @@
-{% extends "base.html"%}
-{% block content %}
+{% extends "base.html" %}
 
 
-    <div class="container single-page blog-page">
-        <div class="row">
-            <div class="col-12">
-                <div class="content-wrap">
-                  <figure class="featured-image-post">
-                      <img src="{{post.photo_url}}" alt="">
-                  </figure><!-- .featured-image -->
-                    <header class="entry-header">
-                        <div class="posted-date">
-                            {{post.post_timestamp.strftime('%B %d, %Y')}}
-                        </div><!-- .posted-date -->
+{% block head %}
 
-                        <h2 class="entry-title">{{post.title}}</h2>
-
-                        <div class="tags-links">
-                            <a href="#">#winter</a>
-                            <a href="#">#love</a>
-                            <a href="#">#snow</a>
-                            <a href="#">#january</a>
-                        </div><!-- .tags-links -->
-                    </header><!-- .entry-header -->
-
-                    <div class="blog-paragraph">
-                      {{post.post_content|safe}}
-                        <!-- <blockquote class="blockquote-text">
-                            <p>Nullam non nisi ut dolor pellentesque eleifend. Aliquam commodo vitae risus malesuada varius. Nulla ornare lacus eu elit sollicitudin varius. Nulla aliquet ornare massa id tempor. Sed luctus dui non turpis sodales, ac tristique risus consequat. Donec tincidunt mi a magna rhoncus dapibus. Integer ut lectus euismod</p>
-                        </blockquote> -->
-                        <!-- .blockquote-text -->
-
-                    </div><!-- .entry-content -->
+  <!--================ Hero sm Banner start =================-->
+  <section class="mb-30px">
+    <div class="container">
+      <div class="hero-banner hero-banner--sm" style="background-image: url({{url_for('static', filename='images/bg.jpg')}}); object-fit: cover">
+        <div class="hero-banner__content">
+          <h1>The Fashion Adviser</h1>
+          <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ url_for('section.index') }}">Inicio</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{ post.section_name }}</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
+  {% endblock %}
 
 
 
+  <!--================ Start Blog Post Area =================-->
+  <section class="blog-post-area section-margin">
+    <div class="container">
+      <div class="row">
+          {% block content %}
+        <div class="col-lg-8">
+            <div class="main_blog_details">
+                <img class="img-fluid" src="{{post.photo_url}}" alt="Foto del post">
+                <a href="#"><h4>{{ post.title }}</h4></a>
+                <div class="user_details">
+                  <div class="float-right mt-sm-0 mt-3">
+                    <div class="media">
+                      <div class="media-body">
+                        <h5>Angie Zcoln</h5>
+                        <p>{{post.post_timestamp.strftime('%d %B %Y %-I:%M %p')}}</p>
+                      </div>
+                      <div class="d-flex">
+                        <img width="42" height="42" src="{{url_for('static', filename='images/about.jpeg')}}" alt="Foto del autor">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="post_content" style="text-align: left; box-sizing: inherit; margin-bottom: 1.5em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; min-width: 100%;">
+                    {{post.post_content | safe}}
+                </div>
+
+           <!-- <blockquote class="blockquote">
+             <p class="mb-0">MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training.</p>
+           </blockquote> -->
+
+               <!-- <div class="news_d_footer flex-column flex-sm-row">
+                 <a href="#"><span class="align-middle mr-2"><i class="ti-heart"></i></span>Lily and 4 people like this</a>
+                 <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><span class="align-middle mr-2"><i class="ti-themify-favicon"></i></span>06 Comments</a>
+                 <div class="news_socail ml-sm-auto mt-sm-0 mt-2">
+                   <a href="#"><i class="fab fa-facebook-f"></i></a>
+                   <a href="#"><i class="fab fa-twitter"></i></a>
+                   <a href="#"><i class="fab fa-dribbble"></i></a>
+                   <a href="#"><i class="fab fa-behance"></i></a>
+                 </div>
+               </div> -->
+              </div>
 
 
-                    <footer class="entry-footer flex flex-column flex-lg-row justify-content-between align-content-start align-lg-items-center">
-                        
-                    </footer><!-- .entry-footer -->
-                </div><!-- .content-wrap -->
-            </div><!-- .col -->
-        </div><!-- .row -->
-    </div><!-- .container -->
-</div><!-- .outer-container -->
+          <!-- <div class="navigation-area">
+                  <div class="row">
+                      <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                          <div class="thumb">
+                              <a href="#"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+                          </div>
+                          <div class="arrow">
+                              <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                          </div>
+                          <div class="detials">
+                              <p>Prev Post</p>
+                              <a href="#"><h4>A Discount Toner</h4></a>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                          <div class="detials">
+                              <p>Next Post</p>
+                              <a href="#"><h4>Cartridge Is Better</h4></a>
+                          </div>
+                          <div class="arrow">
+                              <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                          </div>
+                          <div class="thumb">
+                              <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
+                          </div>
+                      </div>
+                  </div>
+                </div> -->
 
-{% endblock %}
+        </div>
+          {% endblock %}
