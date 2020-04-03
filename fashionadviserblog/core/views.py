@@ -7,8 +7,9 @@ core = Blueprint("section", __name__)
 @core.route('/')
 def index():
     main_posts = Blog_posts.query.order_by(Blog_posts.post_timestamp.desc()).limit(4).all()
-    feature_post = Blog_posts.query.order_by(Blog_posts.post_timestamp.desc()).limit(7).all()
+    feature_post = Blog_posts.query.order_by(Blog_posts.post_timestamp.desc()).limit(6).all()
     feature_post = feature_post[4:]
+
 
 
     fashion_count = db.session.query(Blog_posts).filter(Blog_posts.section_name=='Fashion').count()
@@ -28,10 +29,11 @@ def blog_section(sec_name):
     lifestyle_count = db.session.query(Blog_posts).filter(Blog_posts.section_name=='Lifestyle').count()
     news_count = db.session.query(Blog_posts).filter(Blog_posts.section_name=='News').count()
 
-    main_posts = Blog_posts.query.order_by(Blog_posts.post_timestamp.desc()).filter(Blog_posts.section_name==sec_name).limit(8).all()
+    page = request.args.get('page', 1, type=int)
+    first_page = Blog_posts.query.order_by(Blog_posts.post_timestamp.desc()).filter(Blog_posts.section_name==sec_name).paginate(page=page, per_page=4)
 
 
-    return render_template('section.html', main_posts=main_posts, section_name=sec_name, count=count, fashion_count=fashion_count, lifestyle_count=lifestyle_count, news_count=news_count )
+    return render_template('section.html', first_page=first_page, section_name=sec_name, count=count, fashion_count=fashion_count, lifestyle_count=lifestyle_count, news_count=news_count )
 
 
 @core.route('/google082e320c4857255c.html')
