@@ -6,9 +6,9 @@
   <!--================ Hero sm Banner start =================-->
   <section class="mb-30px">
     <div class="container">
-      <div class="hero-banner hero-banner--sm" style="background-image: url({{url_for('static', filename='images/'+ section_name + '.jpg')}})">
+      <div class="hero-banner hero-banner--sm" style="background-image: url({{url_for('static', filename='images/'+ section_name.lower() + '.jpg')}}); background-position-y: bottom;">
         <div class="hero-banner__content">
-          <h1>{{ section_name }}</h1>
+          <h1 style="font-family: bella_fashion_personal_useRg, cursive" >{{ section_name }}</h1>
           <nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ url_for('section.index') }}">Inicio</a></li>

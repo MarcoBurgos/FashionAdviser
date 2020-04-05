@@ -8,7 +8,7 @@ class PostForm(FlaskForm):
     subtitle = StringField('Sumario:', validators=[DataRequired()])
     photo_url = StringField("Ingresa la URL de la foto:", validators=[DataRequired(), url()])
     section_name = SelectField(u'Elige una categoría para el post:',
-                          choices=[('Fashion', 'Fashion'), ('Beauty', 'Beauty'),
-                                   ('Fitness', 'Fitness'), ('Lifestyle','Lifestyle')])
+                          choices=[('Fashion', 'Fashion'),
+                                   ('News', 'News'), ('Lifestyle','Lifestyle')])
     post_content = TextAreaField('Escribe el contenido del post:',validators=[DataRequired()] )
     submit = SubmitField('Previsualizar')

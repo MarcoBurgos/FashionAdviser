@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>The Fashion Adviser v2</title>
+  <title>The Fashion Adviser</title>
 	<link rel="icon" href="{{ url_for('static', filename='images/favicon.png')}}" type="image/png">
 
   <link rel="stylesheet" href="{{ url_for('static', filename='vendors/bootstrap/bootstrap.min.css')}}">
@@ -15,6 +15,17 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='vendors/owl-carousel/owl.carousel.min.css')}}">
 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+
+  <style media="screen">
+  @font-face {
+  font-family: 'bella_fashion_personal_useRg';
+  src: url('http://127.0.0.1:5000/static/fonts/bellafashion-webfont.woff2') format('woff2'),
+       url('http://127.0.0.1:5000/static/fonts/bellafashion-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  }
+  </style>
+
 </head>
 <body>
   <!--================Header Menu Area =================-->
@@ -38,9 +49,8 @@
               <li class="nav-item"><a  class="nav-link" href="{{ url_for('section.blog_section', sec_name='News') }}">News</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-social">
-              <li><a href="#"><i class="ti-facebook"></i></a></li>
-              <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-              <li><a href="#"><i class="ti-instagram"></i></a></li>
+              <li><a href="https://www.facebook.com/TheFashionAdviser.AngieZcoln/"><i class="ti-facebook"></i></a></li>
+              <li><a href=https://www.instagram.com/the.fashion.adviser/><i class="ti-instagram"></i></a></li>
             </ul>
           </div>
         </div>
@@ -115,12 +125,11 @@
   <footer class="footer-area section-padding">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3  col-md-6 col-sm-6">
+        <div class="col-lg-6  col-md-6 col-sm-6">
           <div class="single-footer-widget">
             <h6>Acerca de mí</h6>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-              magna aliqua.
+              Soy Angie Zcoln, amante de la moda y en este blog quiero crear conciencia sobre las compras, brindar algunos consejos de estilo que ayudarán a mejorar tu imagen y sacarle provecho a todo aquello que tienes en tu clóset, conservando tu economía y el medio ambiente, sin perder tu esencia.
             </p>
           </div>
         </div>
@@ -153,7 +162,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3  col-md-6 col-sm-6">
+        <!-- <div class="col-lg-3  col-md-6 col-sm-6">
           <div class="single-footer-widget mail-chimp">
             <h6 class="mb-20">Instragram Feed</h6>
             <ul class="instafeed d-flex flex-wrap">
@@ -161,17 +170,17 @@
 
             </ul>
           </div>
-        </div>
+        </div> -->
         <div class="col-lg-2 col-md-6 col-sm-6">
           <div class="single-footer-widget">
             <h6>Sígueme</h6>
             <p>En mis redes sociales</p>
             <div class="footer-social d-flex align-items-center">
-              <a href="#">
+              <a href="https://www.facebook.com/TheFashionAdviser.AngieZcoln/">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="#">
-                <i class="fab fa-twitter"></i>
+              <a href="https://www.instagram.com/the.fashion.adviser/">
+                <i class="fab fa-instagram"></i>
               </a>
             </div>
           </div>
