@@ -60,7 +60,6 @@ def update_post(post_id):
             post.title = form.title.data
             post.subtitle = form.subtitle.data
             post.photo_url = form.photo_url.data
-            post.post_timestamp = datetime.now()
             post.post_content = form.post_content.data
             post.section_name =  form.section_name.data
 
