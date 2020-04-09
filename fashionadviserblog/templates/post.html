@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
+{% block meta %}
+<meta property="og:title" content="{{ post.title }}">
+<meta property="og:description" content="{{ post.subtitle }}">
+<meta property="og:image" content="{{ post.photo_url }}">
+<meta property="og:url" content="{{ url_for('blog_posts.post', post_id=post.id) }}">
+{% endblock %}
+
 
 {% block head %}
 
