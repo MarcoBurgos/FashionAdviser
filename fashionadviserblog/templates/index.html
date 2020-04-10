@@ -59,7 +59,7 @@
                 </ul>
               </div>
               <div class="details mt-20">
-                <a href="blog-single.html">
+                <a href="{{ url_for('blog_posts.post', post_id=fpost.id) }}">
                   <h3>{{ fpost.title }}</h3>
                 </a>
                 <p>{{ fpost.subtitle }}</p>
